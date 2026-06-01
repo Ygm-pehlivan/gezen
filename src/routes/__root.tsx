@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "GEZEN" },
+      { name: "description", content: "Gezen App Showcase displays products and features of the Gezen application." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "GEZEN" },
+      { property: "og:description", content: "Gezen App Showcase displays products and features of the Gezen application." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "GEZEN" },
+      { name: "twitter:description", content: "Gezen App Showcase displays products and features of the Gezen application." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ec02cc45-f41d-4c1f-abcd-3686df10df1f" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ec02cc45-f41d-4c1f-abcd-3686df10df1f" },
     ],
     links: [
       {
