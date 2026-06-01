@@ -4,10 +4,16 @@ import heroImg from "@/assets/hero-turkey.jpg";
 import cappadociaImg from "@/assets/cappadocia.jpg";
 import istanbulImg from "@/assets/istanbul.jpg";
 import natureImg from "@/assets/nature.jpg";
+import powerbankImg from "@/assets/product-powerbank.jpg";
+import seedsImg from "@/assets/product-seeds.jpg";
+import tentImg from "@/assets/product-tent.jpg";
+import journalImg from "@/assets/product-journal.jpg";
 import {
   Compass, MapPin, Dices, Search, Sparkles, ShoppingBag,
-  Users, Trophy, Bell, Route as RouteIcon, ArrowRight, Star,
+  Users, Trophy, Bell, Route as RouteIcon, ArrowRight, Star, Download,
 } from "lucide-react";
+
+const DOWNLOAD_URL = "https://tinyurl.com/Gezen-indir";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,8 +54,15 @@ function Landing() {
   );
 }
 
-function Logo({ className = "h-10 w-10" }: { className?: string }) {
-  return <img src={logoAsset.url} alt="Gezen logo" className={className} />;
+function Logo({ className = "h-10 w-10", framed = false }: { className?: string; framed?: boolean }) {
+  if (framed) {
+    return (
+      <span className={`inline-grid place-items-center rounded-2xl bg-white shadow-soft ring-1 ring-black/5 ${className}`}>
+        <img src={logoAsset.url} alt="Gezen logo" className="h-[78%] w-[78%] object-contain" />
+      </span>
+    );
+  }
+  return <img src={logoAsset.url} alt="Gezen logo" className={`${className} object-contain`} />;
 }
 
 function Nav() {
@@ -62,8 +75,8 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          <Logo className="h-9 w-9" />
+        <a href="#" className="flex items-center gap-2.5">
+          <Logo framed className="h-10 w-10" />
           <span className="font-display text-2xl font-bold tracking-tight text-primary">Gezen</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
@@ -71,7 +84,7 @@ function Nav() {
             <a key={h} href={h} className="hover:text-foreground transition">{l}</a>
           ))}
         </nav>
-        <a href="#indir" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary-glow transition shadow-soft">
+        <a href={DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary-glow transition shadow-soft">
           Hemen İndir <ArrowRight className="h-4 w-4" />
         </a>
       </div>
@@ -94,12 +107,12 @@ function Hero() {
         <p className="mt-6 max-w-xl text-lg text-white/85">
           Şans çarkını çevir, hazır temaları keşfet, anılarını biriktir. 81 il, sonsuz rota — hepsi tek bir cep dostu uygulamada.
         </p>
-        <div className="mt-10 flex flex-wrap gap-3" id="indir">
-          <a href="#" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-6 py-3.5 font-semibold hover:bg-sand transition shadow-glow">
-            <Compass className="h-5 w-5" /> App Store
+        <div className="mt-10 flex flex-wrap gap-3">
+          <a href={DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-7 py-4 font-semibold hover:bg-sand transition shadow-glow">
+            <Download className="h-5 w-5" /> Gezen'i İndir
           </a>
-          <a href="#" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3.5 font-semibold hover:opacity-90 transition shadow-glow">
-            <MapPin className="h-5 w-5" /> Google Play
+          <a href="#ozellikler" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur px-7 py-4 font-semibold hover:bg-white/20 transition">
+            Keşfet <ArrowRight className="h-5 w-5" />
           </a>
         </div>
         <div className="mt-12 flex items-center gap-6 text-sm text-white/80">
@@ -151,6 +164,10 @@ function Features() {
 }
 
 function Wheel() {
+  const cities = ["Trabzon", "İzmir", "İstanbul", "Samsun", "Bursa", "Antalya"];
+  const colors = ["#1e4d8c", "#e8954a", "#2d6fb5", "#d97843", "#3b82c4", "#c46535"];
+  const N = cities.length;
+  const cx = 200, cy = 200, r = 180;
   return (
     <section id="cark" className="py-28 md:py-36 bg-ink text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 70% 30%, oklch(0.62 0.16 240 / 0.5), transparent 60%)" }} />
@@ -170,18 +187,57 @@ function Wheel() {
           </ul>
         </div>
         <div className="relative aspect-square max-w-md mx-auto w-full">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-glow via-primary to-ink shadow-glow animate-[spin_30s_linear_infinite]" />
-          <div className="absolute inset-8 rounded-full border-2 border-white/10" />
-          {["Trabzon", "İzmir", "İstanbul", "Samsun", "Bursa", "Antalya"].map((city, i, a) => (
-            <div
-              key={city}
-              className="absolute left-1/2 top-1/2 origin-left text-white font-semibold tracking-wide"
-              style={{ transform: `rotate(${(360 / a.length) * i}deg) translateX(40%)` }}
-            >
-              {city}
-            </div>
-          ))}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 rounded-full bg-white grid place-items-center shadow-glow">
+          {/* Pointer */}
+          <div className="absolute left-1/2 -top-2 -translate-x-1/2 z-10">
+            <div className="w-0 h-0 border-l-[14px] border-l-transparent border-r-[14px] border-r-transparent border-t-[24px] border-t-accent drop-shadow-lg" />
+          </div>
+          <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_30px_60px_rgba(80,140,220,0.4)] animate-[spin_30s_linear_infinite]">
+            <defs>
+              <filter id="wheelShadow">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.3" />
+              </filter>
+            </defs>
+            {cities.map((city, i) => {
+              const startAngle = (i * 360) / N - 90;
+              const endAngle = ((i + 1) * 360) / N - 90;
+              const startRad = (startAngle * Math.PI) / 180;
+              const endRad = (endAngle * Math.PI) / 180;
+              const x1 = cx + r * Math.cos(startRad);
+              const y1 = cy + r * Math.sin(startRad);
+              const x2 = cx + r * Math.cos(endRad);
+              const y2 = cy + r * Math.sin(endRad);
+              const midAngle = (startAngle + endAngle) / 2;
+              const midRad = (midAngle * Math.PI) / 180;
+              const tx = cx + (r * 0.62) * Math.cos(midRad);
+              const ty = cy + (r * 0.62) * Math.sin(midRad);
+              return (
+                <g key={city}>
+                  <path
+                    d={`M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} Z`}
+                    fill={colors[i]}
+                    stroke="white"
+                    strokeWidth="2"
+                  />
+                  <text
+                    x={tx}
+                    y={ty}
+                    fill="white"
+                    fontSize="22"
+                    fontWeight="700"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    transform={`rotate(${midAngle + 90} ${tx} ${ty})`}
+                    style={{ fontFamily: "Plus Jakarta Sans, sans-serif" }}
+                  >
+                    {city}
+                  </text>
+                </g>
+              );
+            })}
+            <circle cx={cx} cy={cy} r={r} fill="none" stroke="white" strokeWidth="4" opacity="0.4" />
+          </svg>
+          {/* Center hub (not rotating) */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 rounded-full bg-white grid place-items-center shadow-glow ring-4 ring-ink">
             <Compass className="h-10 w-10 text-primary" />
           </div>
         </div>
@@ -280,10 +336,10 @@ function Community() {
 
 function Store() {
   const products = [
-    { name: "Powerbank Cast LED", price: "750 TL" },
-    { name: "Çiçek Tohumu", price: "65 TL" },
-    { name: "6 Kişilik Çadır", price: "900 TL" },
-    { name: "Gezi Günlüğü", price: "765 TL" },
+    { name: "Powerbank Cast LED", price: "750 TL", img: powerbankImg },
+    { name: "Çiçek Tohumu", price: "65 TL", img: seedsImg },
+    { name: "6 Kişilik Çadır", price: "900 TL", img: tentImg },
+    { name: "Gezi Günlüğü", price: "765 TL", img: journalImg },
   ];
   return (
     <section id="magaza" className="py-28 md:py-36 bg-primary text-primary-foreground relative overflow-hidden">
@@ -296,9 +352,9 @@ function Store() {
         </div>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {products.map(p => (
-            <div key={p.name} className="rounded-2xl bg-white text-foreground p-6 hover:-translate-y-1 transition shadow-soft">
-              <div className="aspect-square rounded-xl bg-sand grid place-items-center mb-4">
-                <ShoppingBag className="h-10 w-10 text-primary/40" />
+            <div key={p.name} className="rounded-2xl bg-white text-foreground p-5 hover:-translate-y-1 transition shadow-soft">
+              <div className="aspect-square rounded-xl bg-sand overflow-hidden mb-4">
+                <img src={p.img} alt={p.name} loading="lazy" width={512} height={512} className="h-full w-full object-cover" />
               </div>
               <p className="font-bold">{p.name}</p>
               <div className="mt-3 flex items-center justify-between">
@@ -317,7 +373,7 @@ function CTA() {
   return (
     <section className="py-28 md:py-36">
       <div className="mx-auto max-w-5xl px-6 text-center">
-        <Logo className="h-20 w-20 mx-auto" />
+        <Logo framed className="h-24 w-24 mx-auto" />
         <h2 className="mt-8 font-display text-4xl md:text-7xl font-black">
           Bu hafta sonu<br /><span className="text-gradient">nereye?</span>
         </h2>
@@ -325,13 +381,11 @@ function CTA() {
           Çarkı çevir, çantanı topla. Gezen cebinde, Türkiye ayağının altında.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <a href="#" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-4 font-semibold hover:bg-primary-glow transition shadow-glow">
-            <Compass className="h-5 w-5" /> App Store
-          </a>
-          <a href="#" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-4 font-semibold hover:opacity-90 transition">
-            <MapPin className="h-5 w-5" /> Google Play
+          <a href={DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-8 py-4 font-semibold hover:bg-primary-glow transition shadow-glow">
+            <Download className="h-5 w-5" /> Gezen'i Hemen İndir
           </a>
         </div>
+        <p className="mt-4 text-sm text-muted-foreground break-all">{DOWNLOAD_URL}</p>
       </div>
     </section>
   );
@@ -341,8 +395,8 @@ function Footer() {
   return (
     <footer className="border-t border-border py-12">
       <div className="mx-auto max-w-7xl px-6 flex flex-wrap items-center justify-between gap-6">
-        <div className="flex items-center gap-2">
-          <Logo className="h-8 w-8" />
+        <div className="flex items-center gap-2.5">
+          <Logo framed className="h-9 w-9" />
           <span className="font-display text-xl font-bold text-primary">Gezen</span>
         </div>
         <p className="text-sm text-muted-foreground">© 2026 Gezen. Türkiye'de tasarlandı, dünyayı keşfet.</p>
