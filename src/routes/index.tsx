@@ -13,7 +13,7 @@ import {
   Users, Trophy, Bell, Route as RouteIcon, ArrowRight, Star, Download,
 } from "lucide-react";
 
-const DOWNLOAD_URL = "https://tinyurl.com/Gezen-indir";
+const DOWNLOAD_URL = "https://www.dropbox.com/scl/fi/uvy8u1mjxg302c95v0z0m/base.apk?rlkey=j9q6iiu3i03om7aumfbjyggza&st=t1zij500&e=1&dl=1";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -119,7 +119,6 @@ function Hero() {
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-accent text-accent" />)}
           </div>
-          <span>10.000+ gezgin tarafından seviliyor</span>
         </div>
       </div>
     </section>
