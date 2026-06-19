@@ -13,7 +13,7 @@ import {
   Users, Trophy, Bell, Route as RouteIcon, ArrowRight, Star, Download,
 } from "lucide-react";
 
-const DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1jYbBBU1vjyPNwLykdZlLPkwEMYfQqsv-";
+const DOWNLOAD_URL = "/api/download";
 
 export const Route = createFileRoute("/")({
   head: () => ({
