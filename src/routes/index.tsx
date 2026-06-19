@@ -400,7 +400,7 @@ function Footer() {
         </div>
         <p className="text-sm text-muted-foreground">© 2026 Gezen. Türkiye'de tasarlandı, dünyayı keşfet.</p>
         <div className="flex gap-6 text-sm text-muted-foreground">
-          <a href="mailto:Yağmurpehlivan.28Qgmail.com" className="hover:text-foreground"><Bell className="h-4 w-4 inline mr-1" />Yardım</a>
+          <a href="mailto:Yagmurpehlivan.28@gmail.com" className="hover:text-foreground"><Bell className="h-4 w-4 inline mr-1" />Yardım</a>
           <a href="#" className="hover:text-foreground">Gizlilik</a>
         </div>
       </div>
