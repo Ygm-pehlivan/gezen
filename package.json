@@ -4,8 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "dev:host": "vinxi dev --host",
+    "dev": "vite dev",
     "build": "vinxi build",
     "start": "vinxi start"
   },
