@@ -4,12 +4,10 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
-    "build": "npx vinxi build",
-    "build:dev": "vite build --mode development",
-    "preview": "vite preview",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "dev": "vinxi dev",
+    "dev:host": "vinxi dev --host",
+    "build": "vinxi build",
+    "start": "vinxi start"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
